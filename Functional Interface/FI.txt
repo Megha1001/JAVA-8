@@ -1,0 +1,80 @@
+What is FI ?
+-Use to call lambda
+	Common pt. about below interfaces --> all these interfaces contain single abstract method(SAM)
+	Runnable --> run()
+	Comparable --> compareTo()
+	Comparator --> compare()
+	ActionListner -->actionPerformed();
+	Callable --> call()
+
+-An Interface that compulsory contains SAM(Single Abstract Method) is called FI. this require to call lambda expression.
+
+-default methods and static methods are allowed inside FI --> the restriction is applicable only for abstract method
+
+-You can take any num of default and static method , but abstract method should only be one
+
+For example
+
+interface Interf{
+	public void m1();
+	default void m2(){}
+	public void static m3(){}
+
+}
+
+- To specific explicity that interface is FI, there is one annonation - @FunctionalInterface (It is not mandatory)
+-@FunctionalInterface annotation is used to ensure that the functional interface can’t have more than one abstract method.
+-In case more than one abstract methods are present, the compiler flags an ‘Unexpected @FunctionalInterface annotation’ message. However, it is not mandatory to use this annotation.
+- If a method contains exactly one abstract method then it is by default FI, specify with annotations or not.
+
+
+Functional Interface	wrt  Inheritance
+-----------------------------------------
+
+
+Example 1 :We want both the interface should be FI - VALID!
+
+@FunctionalInterface
+interface A{
+	public void m1();
+}
+
+@FunctionalInterface
+interface B extends A{
+}
+
+
+------ VALID
+@FunctionalInterface
+interface A{
+	public void m1();
+}
+
+@FunctionalInterface
+interface B extends A{
+	public void m1();//overriding
+}
+
+------ INVALID
+@FunctionalInterface
+interface A{
+	public void m1();
+}
+
+@FunctionalInterface
+interface B extends A{
+	public void m2();// B contains two abstract method
+}
+
+if a parent if FI then automatically child is also FI only if it doesnot declare any new abstract method.
+
+
+------ VALID
+@FunctionalInterface
+interface A{
+	public void m1();
+}
+
+interface B extends A{
+	public void m2();// this is not functional interface
+}
