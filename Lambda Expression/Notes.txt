@@ -1,0 +1,62 @@
+# Lambda Expresssion
+This is not java specially, already avaiable in other language(Lisp, C, C++, Python, Ruby, JS etc)
+
+Main Objective
+To bring benefits of Functional programming in Java.
+
+What is LE?
+It is a anonymous function.
+	Nameless
+	without return type
+	without modifiers
+
+
+How to write
+Example 1:
+Print Hello
+Normally
+public void printHello(){
+	System.out.println("Hello");
+}
+
+lambda
+
+() ->{System.out.println("Hello");}
+
+if body contains only one line then remove curly braces otherwise need to use
+() ->System.out.println("Hello");
+
+Example 2 :
+public void m1(int a, int b){
+	System.out.println(a+b);
+}
+
+lambda
+
+(a, b)-> System.out.println(a+b);
+Note : Compile can able to guess that type so no need to specify
+
+Example 3 :
+public int squareIt(int n){
+	return n*n;
+}
+
+lambda
+(n) -> {return n*n};
+n -> n*n; 
+Note : No need to write return without curly braces if we want to return that automatically compiler can guess that we have return statement, but within curly braces is required
+if we have one parameter then also no need of paranthesis
+
+Example 4 :
+
+public int len(String input){
+	return input.length();
+}
+
+lambda
+input -> input.length();
+
+
+
+How to call?
+Use FI : Functional Interface
