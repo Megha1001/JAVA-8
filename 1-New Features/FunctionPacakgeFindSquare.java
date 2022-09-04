@@ -1,6 +1,6 @@
 import java.util.function.*;
 
-public class Square{
+public class FunctionPacakgeFindSquare{
   public static void main(String [] args){
     Function<Integer, Integer> f = i -> i * i; // Function<Input,Output> f = input -> output;
     
